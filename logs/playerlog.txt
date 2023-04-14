@@ -1,0 +1,26 @@
+OGar Server - Game Mode: Experimental - Running Time: 117sec
+ID:    1, Nick: Autobot                         , Score:   5952, Cells:  9, Status: 1 IP: BOT
+ID:    3, Nick: Autobot                         , Score:    850, Cells: 26, Status: 1 IP: BOT
+ID:    5, Nick: Autobot                         , Score:    511, Cells: 17, Status: 1 IP: BOT
+ID:    6, Nick: Autobot                         , Score:   3455, Cells: 32, Status: 1 IP: BOT
+ID:    7, Nick: Autobot                         , Score:   1617, Cells: 32, Status: 1 IP: BOT
+ID:    8, Nick: Autobot                         , Score:   1872, Cells: 32, Status: 1 IP: BOT
+ID:    9, Nick: Autobot                         , Score:    455, Cells:  1, Status: 1 IP: BOT
+ID:   11, Nick: Autobot                         , Score:   1137, Cells: 32, Status: 1 IP: BOT
+ID:   12, Nick: Autobot                         , Score:   1961, Cells: 32, Status: 1 IP: BOT
+ID:   13, Nick: Autobot                         , Score:    798, Cells: 14, Status: 1 IP: BOT
+ID:   14, Nick: An unnamed cell                 , Score:   1791, Cells: 32, Status: 1 IP: BOT
+ID:   16, Nick: Autobot                         , Score:   1321, Cells: 32, Status: 1 IP: BOT
+ID:   17, Nick: Autobot                         , Score:    710, Cells: 23, Status: 1 IP: BOT
+ID:   18, Nick: Autobot                         , Score:   1981, Cells: 32, Status: 1 IP: BOT
+ID:   20, Nick: Autobot                         , Score:   1121, Cells: 32, Status: 1 IP: BOT
+ID:   21, Nick: Autobot                         , Score:   2769, Cells: 32, Status: 1 IP: BOT
+ID:   22, Nick: Autobot                         , Score:   1292, Cells: 32, Status: 1 IP: BOT
+ID:   23, Nick: Autobot                         , Score:    876, Cells: 32, Status: 1 IP: BOT
+ID:   24, Nick: Autobot                         , Score:   4889, Cells: 32, Status: 1 IP: BOT
+ID:   25, Nick: Autobot                         , Score:   1776, Cells: 32, Status: 1 IP: BOT
+ID:   26, Nick: {}                              , Score:    249, Cells:  1, Status: 0 IP: ::1
+ID:   27, Nick: {}                              , Score:    282, Cells: 10, Status: 1 IP: ::1
+ID:   28, Nick: {}                              , Score:   5803, Cells: 32, Status: 1 IP: ::1
+ID:   29, Nick: {}                              , Score:   3894, Cells: 32, Status: 1 IP: ::1
+ID:   30, Nick: {}                              , Score:   1486, Cells: 16, Status: 1 IP: ::1
