@@ -1,0 +1,1040 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Ăn càng nhiều càng to, Ăn càng no càng khỏe, Ăn được nhiều người khác là bá chủ">
+<meta name="keywords"
+      content="agario, agar, io, cell, cells, virus, bacteria, blob, game, games, web game, html5, fun, flash">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta property="fb:app_id" content="677505792353827"/>
+<meta property="og:title" content="CDM"/>
+<meta property="og:description"
+      content="Ăn càng nhiều càng to, Ăn càng no càng khỏe, Ăn được nhiều người khác là bá chủ"/>
+<meta property="og:url" content="http://ugunz.info/nuotca/"/>
+<meta property="og:image" content="http://agar.io/img/1200x630.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:type" content="website"/>
+<title>99999$</title>
+<link id="favicon" rel="icon" type="image/png" href="favicon.png"/>
+<link href='https://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="Vector2.js"></script>
+<script src="main_out.js?560"></script>
+<link rel="stylesheet" type="text/css" href="img.css"/>
+<!--<link rel="stylesheet" type="text/css" href="css/msdropdown/dd.css"/>-->
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .list-skins {
+        width: 100%;
+        height: 100%;
+        padding: 10px 8px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .list-skins li {
+        margin: 0 8px;
+        border: 2px solid black;
+        border-radius: 50%;
+    }
+
+    .list-skins li.active {
+        border: 2px solid rgb(224, 19, 19);
+    }
+
+    .list-skins li img {
+        border-radius: 50%;
+        width: 96px;
+        height: 96px;
+        cursor: pointer;
+        object-fit: cover;
+    }
+
+    #canvas {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .498039);
+    }
+
+    .checkbox label {
+        margin-right: 10px;
+    }
+
+    form {
+        margin-bottom: 0px;
+    }
+
+    .btn-play,
+    .btn-settings,
+    .btn-spectate {
+        display: block;
+        height: 35px;
+        background: rgba(0, 0, 0, .2);
+    }
+
+    .btn-play {
+        width: 85%;
+        float: left;
+    }
+
+    .btn-settings {
+        width: 13%;
+        float: right;
+    }
+
+    .btn-settings font {
+        color: black !important;
+    }
+
+    .region-message {
+        display: none;
+        margin-bottom: 12px;
+        margin-left: 6px;
+        margin-right: 6px;
+        text-align: center;
+    }
+
+    li {
+        color: white;
+        /* bullet color */
+    }
+
+    li span {
+        color: black;
+        /* text color */
+    }
+
+    #nick,
+    #locationKnown #region {
+        width: 65%;
+        float: left;
+        background: rgba(0, 0, 0, .4);
+    }
+
+    #locationUnknown #region {
+        margin-bottom: 15px;
+    }
+
+    #gamemode {
+        width: 33%;
+        float: right;
+        background: rgba(0, 0, 0, .4);
+        font-family: 20px Ubuntu;
+
+    }
+
+    #spectateBtn {
+        width: 33%;
+        float: right;
+        background: rgba(0, 0, 0, .4);
+    }
+
+    .user-id {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 2px 0;
+    }
+
+    #helloDialog {
+        width: 375px;
+        background-color: whitesmoke !important;
+        margin: 10px auto;
+        border-radius: 15px;
+        background: rgba(0, 0, 0, .7);
+        padding: 5px 15px 5px 15px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+
+    #chat_textbox {
+        -webkit-transition: all .5s ease-in-out;
+        -moz-transition: all .5s ease-in-out;
+        -o-transition: all .5s ease-in-out;
+        transition: all .5s ease-in-out;
+        position: absolute;
+        z-index: 1;
+        border-radius: 25px;
+        bottom: 10px;
+        background: rgba(0, 0, 0, .8);
+        border: 0px;
+        outline: none;
+        color: #000000;
+        height: 30px;
+        text-indent: 12px;
+        left: 10px;
+        width: 300px;
+        -webkit-animation: rainbow-text 6000ms linear 0ms infinite normal;
+        -moz-animation: rainbow-text 6000ms linear 0ms infinite normal;
+        -ms-animation: rainbow-text 6000ms linear 0ms infinite normal;
+        animation: rainbow-text 6000ms linear 0ms infinite normal;
+
+    }
+
+    #chat_textbox:focus {
+        background: rgba(0, 0, 0, .5);
+
+    }
+
+    .user-info-dialog {
+        width: 200px;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-200%, -68%);
+        background: whitesmoke;
+        border-radius: 16px;
+        padding: 12px;
+    }
+
+    .hide-setting-btn {
+        transform: translate(-200%, -65%);
+    }
+
+    .form-control {
+        background: white !important;
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    .user-info-dialog .user-name {
+        font-weight: 700;
+        margin: 6px 0;
+        font-size: 1.2rem;
+        opacity: .7;
+    }
+
+    .logout {
+        cursor: pointer;
+        font-size: 1.2rem;
+    }
+
+    .logout:hover {
+        text-decoration: underline;
+    }
+
+    .user-level {
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+
+    .user-detail {
+        margin: 8px 0;
+    }
+
+    .user-exp-bar {
+        border: 2px solid;
+        border-radius: 16px;
+        width: 150px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4px 6px;
+        font-weight: 700;
+    }
+
+    .user-avatar {
+        width: 64px;
+        border-radius: 50%;
+        object-fit: cover;
+        height: 64px;
+    }
+
+    @-webkit-keyframes rainbow-text {
+        0% {
+            color: #FF3399;
+        }
+        23% {
+            color: #FF6633;
+        }
+        48% {
+            color: #FFF802;
+        }
+        80% {
+            color: #04A396;
+        }
+        100% {
+            color: #3366FF;
+        }
+    }
+
+    @-moz-keyframes rainbow-text {
+        0% {
+            color: #FF3399;
+        }
+        23% {
+            color: #FF6633;
+        }
+        48% {
+            color: #FFF802;
+        }
+        80% {
+            color: #04A396;
+        }
+        100% {
+            color: #3366FF;
+        }
+    }
+
+    @-o-keyframes rainbow-text {
+        0% {
+            color: #FF3399;
+        }
+        23% {
+            color: #FF6633;
+        }
+        48% {
+            color: #FFF802;
+        }
+        80% {
+            color: #04A396;
+        }
+        100% {
+            color: #3366FF;
+        }
+    }
+
+    @-ms-keyframes rainbow-text {
+        0% {
+            color: #FF3399;
+        }
+        23% {
+            color: #FF6633;
+        }
+        48% {
+            color: #FFF802;
+        }
+        80% {
+            color: #04A396;
+        }
+        100% {
+            color: #3366FF;
+        }
+    }
+
+    @keyframes rainbow-text {
+        0% {
+            color: #FF3399;
+        }
+        23% {
+            color: #FF6633;
+        }
+        48% {
+            color: #FFF802;
+        }
+        80% {
+            color: #04A396;
+        }
+        100% {
+            color: #3366FF;
+        }
+    }
+
+    @-webkit-keyframes rainbow-text1 {
+        40% {
+            color: #FF3399;
+        }
+        70% {
+            color: #FF6633;
+        }
+        80% {
+            color: #FFF802;
+        }
+        90% {
+            color: #04A396;
+        }
+        100% {
+            color: #3366FF;
+        }
+    }
+
+    @-moz-keyframes rainbow-text1 {
+        40% {
+            color: #FF3399;
+        }
+        70% {
+            color: #FF6633;
+        }
+        80% {
+            color: #FFF802;
+        }
+        90% {
+            color: #04A396;
+        }
+        100% {
+            color: #3366FF;
+        }
+    }
+
+    @-o-keyframes rainbow-text1 {
+        40% {
+            color: #FF3399;
+        }
+        70% {
+            color: #FF6633;
+        }
+        80% {
+            color: #FFF802;
+        }
+        90% {
+            color: #04A396;
+        }
+        100% {
+            color: #3366FF;
+        }
+    }
+
+    @-ms-keyframes rainbow-text1 {
+        40% {
+            color: #FF3399;
+        }
+        70% {
+            color: #FF6633;
+        }
+        80% {
+            color: #FFF802;
+        }
+        90% {
+            color: #04A396;
+        }
+        100% {
+            color: #3366FF;
+        }
+    }
+
+    @keyframes rainbow-text1 {
+        40% {
+            color: #FF3399;
+        }
+        70% {
+            color: #FF6633;
+        }
+        80% {
+            color: #FFF802;
+        }
+        90% {
+            color: #04A396;
+        }
+        100% {
+            color: #3366FF;
+        }
+    }
+
+
+    #nick {
+        width: 65%;
+        float: left;
+        border: 0px #000000 solid;
+        background-color: #5f00bf;
+        background: rgba(0, 0, 0, .4);
+        font-family: 20px Ubuntu;
+        font-size: 13px;
+
+    }
+
+    #playBtn {
+        border: 0px #000000 solid;
+        background: rgba(0, 0, 0, .4);
+        font-family: Comic Sans MS;
+        font-size: 16px;
+
+    }
+
+    #logo {
+        border: 0px #000000 solid;
+        font-family: Comic Sans MS;
+        font-size: 40px;
+
+        animation: rainbow-text 7000454ms linear 0ms infinite normal;
+    }
+
+    #a300x250 {
+        width: 300px;
+        height: 250px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+
+    .mini-map {
+        display: block;
+        position: fixed
+    }
+
+
+    .mini-map {
+        bottom: 20px;
+        right: 10px;
+        width: 200px;
+        height: 200px;
+
+        z-index: 11
+    }
+
+</style>
+</head>
+
+<body>
+
+
+<div id="fb-root"></div>
+
+<div id="overlays"
+     style="display:none; position: absolute; left: 0; right: 0; top: 0; bottom: 0; background-color: rgba(0,0,0,0.4); z-index: 200;">
+    <!--    if login success!-->
+    <!--    coded by khanhAxios-->
+    <br>
+    <center>
+        <div class="user-info-dialog" id="user-info-dialog">
+            <div style="text-align: center">
+                <img class="user-avatar" src="./images/user.png"/>
+                <p class="user-name">Ninh Quoc Tuan</p>
+                <div style="display: flex;justify-content: center;align-items: center;width: 150px">
+                    <p class="user-id" style="margin:0 10px"></p>
+                    <div style="display: flex;justify-content: center;align-items: flex-end">
+                        <img src="./images/upload.png" style="margin: 0;padding: ;width: 16px;height: 16px"/>
+                        <span class="user-coins" style="font-size: 1.2rem;font-weight: 700">: </span>
+                    </div>
+                </div>
+            </div>
+            <div class="user-detail">
+                <div class="user-exp-bar">
+                    <span></span>
+                    <span class="exp">0/9400 XP</span>
+                    <span></span>
+                </div>
+            </div>
+            <div style="width: 150px;display: flex;justify-content: space-around;align-items: center">
+                <span class="user-level">Lv:1</span>
+                <span class="logout" onclick="logout()">Đăng Xuất</span>
+            </div>
+            <a data-toggle="modal" data-target="#inPageModal" onclick="inPageModal" class="btn btn-info"
+               role="button"
+               style="width: 80%;margin-top:8px ">Chọn Skin</a>
+
+
+        </div>
+    </center>
+    <!---->
+
+    <div id="helloDialog">
+
+        <form role="form">
+            <div class="form-group">
+                <div style="float: left; margin-left: 20px;">
+                    <div id="logo">
+                        <label>TESTER 202G</label>
+                    </div>
+                </div>
+                <br clear="both"/></div>
+
+            <div class="form-group">
+                <input id="nick" class="form-control" placeholder="Nick" maxlength="15"/>
+                <select id="gamemode" class="form-control" onchange="setGameMode($(this).val());" required>
+                    <option selected value="">FFA</option>
+                </select>
+                <br clear="both"/></div>
+            <div id="locationUnknown">
+                <select id="region" class="form-control" onchange="setRegion($('#region').val());" required>
+                    <option selected disabled value="">Pick Server Here</option>
+                    <option value="WestAgario">Server 1</option>
+                </select>
+            </div>
+            <div>
+                <div class="text-muted region-message CN-China"></div>
+            </div>
+            <div class="form-group">
+                <button type="submit" id="play-btn"
+                        onclick="setNick(document.getElementById('nick').value); return false;"
+                        class="btn btn-play btn-success btn-needs-server">Play
+                </button>
+
+                <button onclick="$('#settings, #instructions').toggle(); return false;"
+                        class="btn btn-info btn-settings" id="settings-btn-on"><i class="glyphicon glyphicon-cog"></i>
+                </button>
+
+                <br><br>
+                <button type="button" id="btnLogin" data-toggle="modal" data-target="#login" role="button"
+                        class="btn btn-play btn-primary btn-needs-server">Login️
+                </button>
+                <button onclick="$('#settings, #instructions').toggle(); return false;"
+                        class="btn btn-info btn-settings" id="settings-btn"><i class="glyphicon glyphicon-cog"></i>
+                </button>
+                <br clear="both"/>
+            </div>
+
+            <div id="settings" class="checkbox" style="display:none;">
+                <div class="form-group" id="mainform">
+                    <div id="locationKnown"></div>
+                    <button id="spectateBtn" onclick="spectate(); return false;" disabled
+                            class="btn btn-info btn-spectate btn-needs-server">Spectate
+                    </button>
+                    <br clear="both"/></div>
+                <div style="margin: 6px;">
+                    <label>
+                        <input type="checkbox" onchange="setSkins(!$(this).is(':checked'));"><font
+                            color="#000">N</font><font color="#000">o</font><font color="#000"> </font><font
+                            color="#000">S</font><font color="#000">k</font><font color="#000">i</font><font
+                            color="#000">n</font><font color="#000">s</font></label>
+                    <label>
+                        <input type="checkbox" onchange="setNames(!$(this).is(':checked'));"><font
+                            color="#000">N</font><font color="#000">o</font><font color="#000"> </font><font
+                            color="#000">N</font><font color="#000">a</font><font color="#000">m</font><font
+                            color="#000">e</font><font color="#000">s</font></label>
+                    <label>
+                        <input type="checkbox" onchange="setDarkTheme($(this).is(':checked'));"><font
+                            color="#000">D</font><font color="#000">a</font><font color="#000">r</font><font
+                            color="#000">k</font><font color="#000"> </font><font color="#000">T</font><font
+                            color="#000">h</font><font color="#000">e</font><font color="#000">m</font><font
+                            color="#000">e</font></label>
+                    <label>
+                        <input type="checkbox" onchange="setColors($(this).is(':checked'));"><font
+                            color="#000">N</font><font color="#000">o</font><font color="#000"> </font><font
+                            color="#000">C</font><font color="#fffdfd">o</font><font color="#fffcfd">l</font><font
+                            color="#fffbfc">o</font><font color="#fffbfc">r</font><font color="#fffafb">s</font></label>
+                    <label>
+                        <input type="checkbox" onchange="setShowMass($(this).is(':checked'));"><font
+                            color="#ffffff">S</font><font color="#fffeff">h</font><font color="#fffefe">o</font><font
+                            color="#fffdfe">w</font><font color="#fffdfd"> </font><font color="#fffcfd">M</font><font
+                            color="#fffbfc">a</font><font color="#fffbfc">s</font><font color="#fffafb">s</font></label>
+                    <label>
+                        <input type="checkbox" onchange="setHideChat($(this).is(':checked'));"><font
+                            color="#ffffff">H</font><font color="#fffeff">i</font><font color="#fffefe">d</font><font
+                            color="#fffdfe">e</font><font color="#fffdfd"> </font><font color="#fffcfd">C</font><font
+                            color="#fffbfc">h</font><font color="#fffbfc">a</font><font color="#fffafb">t</font></label>
+                    <label>
+                        <input type="checkbox" onchange="setSmooth($(this).is(':checked'));"><font
+                            color="#f9f7ef">N</font><font color="#faf9f2">o</font><font color="#fbfaf4"> </font><font
+                            color="#fcfcf7">L</font><font color="#fdfdf9">a</font><font color="#fefffc">g</font></label>
+                </div>
+            </div>
+        </form>
+        <div id="instructions">
+
+            <center><span class="text-muted">
+				Move your mouse to control your cell<br/>
+			Press <b>Space</b> to split<br/>
+		Press <b>W</b> to eject some mass<br/>
+			</span></center>
+        </div>
+        <div id="instructions">
+            <hr>
+
+            <div id="fb-root"></div>
+            <center>
+                <div id="footer">
+
+                    <a href="#" class="text-muted">TRUONG CAO TUNG</a>
+                    <br>
+                    <a href="" class="text-muted">A.K.A</a>
+                    <br>
+                    <a href="" class="text-muted">NINH Q TUAN</a>
+            </center>
+        </div>
+    </div>
+
+</div>
+</div>
+
+
+<div id="connecting..."
+     style="display:none;position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 100; background-color: rgba(0,0,0,0.5);">
+    <div style="width: 350px; background-color: #FFF; margin: 100px auto; border-radius: 15px; padding: 5px 15px 5px 15px;">
+        <h2>Connecting</h2>
+        <p> Sorry, Server Under Maintenance, Or Just Down At The Moment!
+    </div>
+</div>
+
+
+<input type="hidden" id="skin" class="form-control" placeholder="Skin Name">
+<!--chose skin modal-->
+<div class="modal fade" id="inPageModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div id="inPageModalBody" class="modal-body">
+                <ul class="list-skins">
+
+                </ul>
+                <div class="center">
+                    <div class="loader"></div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <a href="./uploads.html">
+                    <button type="button" class="btn btn-primary border-0">Upload SKin</button>
+                </a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end chose skin modal -->
+
+
+<canvas id="canvas" width="800" height="600"></canvas>
+<input type="text" id="chat_textbox" maxlength="50" placeholder="Press Enter To Chat!"/>
+
+<div style="font-family:'Ubuntu'">&nbsp;</div>
+
+
+<div class="modal fade" id="login" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                <h4 id="inPageModalTitle" class="modal-title">Login </h4>
+            </div>
+            <div id="inPageModalBody" class="modal-body">
+                <form id="form_login">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username1" class="form-control"
+                               placeholder="Email address or username" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password1" class="form-control"
+                               placeholder="Password"
+                               required/>
+                    </div>
+                    <div class="alert alert-danger alert-errors"></div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Sign In</button>
+                    <hr>
+                </form>
+                <div class="center">
+                    Bạn chưa có tài khoản<a href="javascript:void(0);" data-toggle="modal" data-target="#register">
+                    Register Now </a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="register" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 id="inPageModalTitle" class="modal-title">Register</h4>
+            </div>
+            <div id="inPageModalBody" class="modal-body">
+                <form id="form_register">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Name" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Email address"
+                               required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" class="form-control" placeholder="Username"
+                               required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Password"
+                               required/>
+                    </div>
+                    <div class="alert alert-success"></div>
+                    <div class="alert alert-danger alert-errors"></div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Sign Up</button>
+                    <hr/>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<img src="mini-map.png" width="150" height="150" alt="Position" id="imgpos"/>
+<script src="minimap.js?9"></script>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script type="text/javascript">
+    //code by khanh
+    let user_id = 0;
+    Array.from(document.querySelectorAll("font")).forEach((item) => item.style.color = "#000")
+
+    const handleCheckAuthenticate = () => {
+        // send a request to check is login?
+        // if login success call load user!
+        $.ajax({
+            method: "POST",
+            url: "ajax/check_authenticate.php",
+            success: (res) => {
+                user_id = JSON.parse(res).user.id
+                handleLoadUserInfo(JSON.parse(res).user)
+            },
+            error: (err) => {
+                alert("Opps!Something wrong!")
+                //    you can reload page here!
+            }
+        })
+    }
+
+    const handleLoadUserInfo = (user) => {
+        //    load data to dialog
+        console.log(user);
+        let userDialog = document.getElementById("user-info-dialog")
+        let username = document.querySelector("#user-info-dialog .user-name")
+
+
+        let id = document.querySelector("#user-info-dialog .user-id")
+
+        let btnLogin = document.getElementById("btnLogin")
+        let settingBtn = document.getElementById("settings-btn")
+        let settingBtnOn = document.getElementById("settings-btn-on")
+        let coins = document.querySelector(".user-coins")
+        let skin = document.querySelector(".user-avatar")
+        settingBtnOn.style.display = "none"
+        if (user) {
+            if (user.active_image_path) {
+                skin.setAttribute("src", user.active_image_path)
+            }
+            username.textContent = user.username;
+
+            userDialog.style.display = "flex"
+            id.textContent = "ID:" + user.id
+            btnLogin.style.display = "none"
+            settingBtn.style.display = "none"
+            settingBtnOn.style.display = "inline-block"
+            userDialog.classList.add("hide-setting-btn")
+            coins.textContent = ":" + user.coins
+        } else {
+            userDialog.style.display = "none"
+            btnLogin.style.display = "inline-block"
+            id.textContent = ""
+            settingBtnOn.style.display = "none"
+            settingBtn.style.display = "inline-block"
+            userDialog.classList.remove("hide-setting-btn")
+        }
+
+    }
+
+    handleCheckAuthenticate()
+
+    function logout() {
+        $.post("logout.php", [], function (data) {
+            console.log(data)
+            if (data) {
+                window.location.assign(window.location.href)
+            }
+        })
+    }
+
+    $(document).ready(function () {
+
+
+        //    end
+        $("#sign-in-link").click(function () {
+            $("#sign-up-form-container").hide();
+            $("#sign-in-form-container").fadeIn(500);
+        });
+
+        $("#sign-up-link").click(function () {
+            $("#sign-in-form-container").hide();
+            $("#sign-up-form-container").fadeIn(500);
+        });
+
+        $("#form_login").submit(function (e) {
+            e.preventDefault();
+            $.post("ajax/login.php", {formData: $(this).serialize()}, function (data) {
+                console.log(data);
+                if (data.success === true) {
+                    window.location.reload();
+                } else {
+                    errors_data = '<ul>';
+                    for (var i = 0; i < data.errors.length; i++) {
+                        errors_data += '<li>' + data.errors[i] + '</li>';
+                    }
+                    errors_data += '</ul>';
+
+                    $("#form_login .alert-errors").html(errors_data).hide().fadeIn(1000);
+                }
+            }, 'json');
+        });
+
+        $("#form_register").submit(function (e) {
+            e.preventDefault();
+            $.post("ajax/register.php", {formData: $(this).serialize()}, function (data) {
+                console.log(data);
+                if (data.success === true) {
+                    $("#form_register .alert-errors").html("").hide();
+                    $("#form_register .alert-success").html("Successful registration. Redirecting to dashboard in 3 seconds. Please wait...").fadeIn(1000);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 3000);
+                } else {
+                    errors_data = '<ul>';
+                    for (var i = 0; i < data.errors.length; i++) {
+                        errors_data += '<li>' + data.errors[i] + '</li>';
+                    }
+                    errors_data += '</ul>';
+                    $("#form_register .alert-errors").html(errors_data).hide().fadeIn(1000);
+                }
+            }, 'json');
+        });
+    });
+
+    window.addEventListener('keydown', keydown);
+    window.addEventListener('keyup', keyup);
+
+    var EjectDown = false;
+
+    var speed = 25; //in ms
+
+    function keydown(event) {
+        if (event.keyCode == 87 || event.keyCode == 82 && EjectDown === false) { // key W
+            EjectDown = true;
+            setTimeout(eject, speed);
+        }
+        if (event.keyCode == 32) { //key A
+            //split();
+
+        }
+        if (event.keyCode == 83) { //key S
+            X = window.innerWidth / 2;
+            Y = window.innerHeight / 2;
+            $("canvas").trigger($.Event("mousemove", {clientX: X, clientY: Y}));
+        }
+    }
+
+    function keyup(event) {
+        if (event.keyCode == 87 || event.keyCode == 82) { // key W
+            EjectDown = false;
+        }
+    }
+
+    function eject() {
+        if (EjectDown) {
+            window.onkeydown({keyCode: 87}); // key W
+            window.onkeyup({keyCode: 87});
+
+            window.onkeydown({keyCode: 82}); // key W
+            window.onkeyup({keyCode: 82});
+
+            setTimeout(eject, speed);
+        }
+    }
+
+    function split() {
+        $("body").trigger($.Event("keydown", {keyCode: 32})); //key space
+        $("body").trigger($.Event("keyup", {keyCode: 32})); //jquery is required for split to work
+    }
+
+    function setskin(a) {
+        $('#skin').val(a);
+    }
+
+    function confirmSetSkin(path, self) {
+        if (confirm("Do you really use this skin?")) {
+            let rel_path  = path.slice(8,path.length - 4)
+            setskin(rel_path)
+            document.querySelectorAll(".list-skins li").forEach((val, index) => {
+                if (val.classList.contains("active")) {
+                    val.classList.remove("active")
+                }
+            })
+
+            document.querySelectorAll(".list-skins li").forEach((val, index) => {
+                if (val === self) {
+                    if (!val.classList.contains("active")) {
+                        val.classList.add("active")
+                    }
+                }
+            })
+            $.ajax({
+                url: "ajax/update_active_image.php",
+                method: "post",
+                data: {user_id: user_id, path: path},
+                success: (res) => {
+                    document.querySelector(".user-avatar").setAttribute("src",path)
+                    $("#inPageModal").modal("hide")
+                }
+            })
+        }
+    }
+
+
+    const handleLoadUISkins = (skins) => {
+        if (skins) {
+            let htmls = skins.map((val, index) => {
+                return `
+                <li class="skin-item skin" onclick="confirmSetSkin('${val.path}',this)">
+                                <img src="${val.path}">
+                </li>`;
+                
+                }).join(" ")
+
+
+            htmls += `
+            <li class="skin-item active" onclick="confirmSetSkin('./images/user.png',this)">
+                        <img src="./images/user.png"/>
+                    </li>`
+            document.querySelector(".list-skins").innerHTML = htmls;
+        }
+    }
+
+    $("#inPageModal").on("show.bs.modal", function () {
+        if (user_id > 0) {
+            $.ajax({
+                url: "ajax/get_skins.php",
+                method: "post",
+                data: {user_id: user_id},
+                success: (res) => {
+                    handleLoadUISkins(JSON.parse(res))
+                }
+            })
+        } else {
+            alert("Can't load user skins!")
+        }
+    })
+</script>
+</body>

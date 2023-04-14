@@ -1,0 +1,429 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Upload Skin ChoiOne</title>
+<link href="css/style-upload.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<link href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css" rel="stylesheet">
+<script src="https://momentjs.com/downloads/moment.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/demo.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<style>
+    #loader {
+        bottom: 0;
+        height: 175px;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 175px;
+    }
+
+    .no-js-page {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        z-index: 999;
+        background-color: red;
+        color: whitesmoke;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .no-js-page div {
+        font-size: 48px;
+    }
+
+    #loader {
+        bottom: 0;
+        height: 175px;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 175px;
+    }
+
+    #loader .dot {
+        bottom: 0;
+        height: 100%;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 87.5px;
+    }
+
+    #loader .dot::before {
+        border-radius: 100%;
+        content: "";
+        height: 87.5px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: scale(0);
+        width: 87.5px;
+    }
+
+    #loader .dot:nth-child(7n+1) {
+        transform: rotate(45deg);
+    }
+
+    #loader .dot:nth-child(7n+1)::before {
+        animation: 0.8s linear 0.1s normal none infinite running load;
+        background: #00ff80 none repeat scroll 0 0;
+    }
+
+    #loader .dot:nth-child(7n+2) {
+        transform: rotate(90deg);
+    }
+
+    #loader .dot:nth-child(7n+2)::before {
+        animation: 0.8s linear 0.2s normal none infinite running load;
+        background: #00ffea none repeat scroll 0 0;
+    }
+
+    #loader .dot:nth-child(7n+3) {
+        transform: rotate(135deg);
+    }
+
+    #loader .dot:nth-child(7n+3)::before {
+        animation: 0.8s linear 0.3s normal none infinite running load;
+        background: #00aaff none repeat scroll 0 0;
+    }
+
+    #loader .dot:nth-child(7n+4) {
+        transform: rotate(180deg);
+    }
+
+    #loader .dot:nth-child(7n+4)::before {
+        animation: 0.8s linear 0.4s normal none infinite running load;
+        background: #0040ff none repeat scroll 0 0;
+    }
+
+    #loader .dot:nth-child(7n+5) {
+        transform: rotate(225deg);
+    }
+
+    #loader .dot:nth-child(7n+5)::before {
+        animation: 0.8s linear 0.5s normal none infinite running load;
+        background: #2a00ff none repeat scroll 0 0;
+    }
+
+    #loader .dot:nth-child(7n+6) {
+        transform: rotate(270deg);
+    }
+
+    #loader .dot:nth-child(7n+6)::before {
+        animation: 0.8s linear 0.6s normal none infinite running load;
+        background: #9500ff none repeat scroll 0 0;
+    }
+
+    #loader .dot:nth-child(7n+7) {
+        transform: rotate(315deg);
+    }
+
+    #loader .dot:nth-child(7n+7)::before {
+        animation: 0.8s linear 0.7s normal none infinite running load;
+        background: magenta none repeat scroll 0 0;
+    }
+
+    #loader .dot:nth-child(7n+8) {
+        transform: rotate(360deg);
+    }
+
+    #loader .dot:nth-child(7n+8)::before {
+        animation: 0.8s linear 0.8s normal none infinite running load;
+        background: #ff0095 none repeat scroll 0 0;
+    }
+
+    @keyframes load {
+        100% {
+            opacity: 0;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes load {
+        100% {
+            opacity: 0;
+            transform: scale(1);
+        }
+    }
+
+    .form-napthechoione {
+        margin: 30px auto 20px !important;
+        border: 1px solid #e5e5e5;
+        padding: 19px 29px 39px;
+        width: 500px;
+    }
+
+    .form-napthechoione input,
+    select {
+        width: 260px !important;
+    }
+
+    .form-group {
+        width: 560px;
+    }
+
+    .col-lg-2 {
+        width: 93px;
+    }
+
+    .error {
+        color: red;
+    }
+
+    #popup {
+        z-index: 999;
+    }
+
+    .ui-main {
+        border-radius: 8px !important;
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+    }
+</style>
+
+</head>
+
+<body>
+<header>
+    <div class="header-top">
+    </div>
+    <div class="bot-head">
+        <div class="layout" style=" margin: 2% 0% 2% 10%;">
+            <a href="https://choi.one/" id="logo">
+                <img src="./img/" alt="" title="">
+            </a>
+        </div>
+    </div>
+</header>
+<div class="layout">
+    <div class="main ui-main">
+        <div class="left-panel" style="border-radius: 8px 0 0 8px">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" style="border-radius: 8px 0 0 0px!important;" href="#profile" role="tab"
+                       data-toggle="tab">
+                        UPLOAD</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane in active" id="profile">
+                    <div class="upload_div">
+                        <div class="content">
+                            <form id="singleUploadForm" action="" method="POST" enctype="multipart/form-data">
+                                <div class="wrap-custom-file">
+                                    <input type="file" required name="image1" id="singleFileUploadInput"
+                                           accept="image/png">
+                                    <label for="singleFileUploadInput" class="singleFileUploadInput">
+                                        <span>Chọn ảnh</span>
+                                        <i class="fa fa-plus-circle"></i>
+                                    </label>
+                                    <button type="submit" name="submit" class="btn btn-success btn-md submit-btn"
+                                            style="width: 150px;margin: 154px -4.5rem 1rem;">Submit
+                                    </button>
+                                </div>
+                            </form>
+                            <div class="upload-response">
+                                <div id="responseMessage"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="right-panel" style="border-radius: 0 8px 8px 0!important;">
+            <div style="margin:60px 0; display: flex;flex-direction: column;justify-content: flex-start;height: 100%; align-items: center">
+                <img src="./images/user.png" style="object-fit: cover;border-radius: 50%;cursor: pointer"
+                     class="user-skin" width="128" height="128">
+                <h4 class="user-name" style="margin: 10px">UserName</h4>
+                <div>
+                    <h5 class="user-level" style="font-size: 1.6rem;font-weight: 700;text-align: center;">LV.1</h5>
+                    <div style="display: flex;justify-content: space-around; align-items: center;width: 100%">
+                        <div style="cursor:pointer; width: 36px ;height:36px ;background-size: cover ;margin: 8px 10px;background-image: url(./images/upload.png)"></div>
+                        <h5 class="user-coins" style="font-weight: 700;font-size: 1.6rem;margin: 0">100</h5>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="modal in" id="modalLoading" tabindex="-1" style="z-index: 10001;" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div id="loader">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+        <div class="modal" id="modalInfo" tabindex="-1" style="z-index: 10000;" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Thông báo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="
+    margin-top: -20px;
+    font-size: 25px;
+">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<noscript class="no-js-page">
+    <div>You must enable javascript to load page</div>
+</noscript>
+<script src="btw.js"></script>
+<script>
+    <!--    check authenticate-->
+
+    let user_id = 0;
+    let user_coin = 0;
+    const handleLoadUserUi = (user) => {
+        if (user) {
+            console.log(user)
+            document.querySelector(".user-name").textContent = user.username;
+            document.querySelector(".user-coins").textContent = user.coins;
+            if (user.active_image_path) {
+                document.querySelector(".user-skin").setAttribute("src", user.active_image_path)
+            }
+            user_id = user.id
+            user_coin = user.coins
+        } else {
+            console.log("payload throw failed!")
+        }
+    }
+
+    handleAuthenticate(handleLoadUserUi)
+
+
+    //upload file
+
+
+    const handleRandomFilename = (length) => {
+
+        let chars = ['a', 'b', 'c', 'd', 'g', 'h', 'i', 'k', 'm', 'n', 'e', 'g',
+            'q', 'A', 'B', 'X', 'x', 'y', 'Y', 'z', 'Z', 'v', 'V', '0', '1', '2', '3', '4', '5',
+            '6', '7', '8', '9']
+
+        let str = ''
+
+        for (let i = 0; i < length; i++) {
+
+            let randIndex = Math.floor(Math.random() * (chars.length - 0) + 0)
+
+            str += chars[randIndex]
+
+        }
+
+        return str;
+    }
+
+    let uploadForm = document.getElementById("singleUploadForm")
+
+
+    uploadForm.onsubmit = (event) => {
+        event.preventDefault();
+
+        let fileInput = document.getElementById("singleFileUploadInput");
+
+        console.log(fileInput.files)
+
+        if (fileInput.files[0].type === "image/png") {
+            let filename = handleRandomFilename(12) + ".png"
+
+
+            let file = new File([fileInput.files[0]], filename, {type: "image/png"})
+            if (file.size <= 5000000)			{
+                let formData = new FormData()
+				console.log(file.size)
+
+                formData.append("skin", file)
+                formData.append("user_id", user_id)
+                if (user_coin > 0) {
+                    handleUpload(formData)
+                } else {
+                    alert("NO ENOUGH UPLOAD TIME!")
+                }
+            }else {
+                alert("FILE'S SIZE MUST BE LESS THAN 5MB!")
+            }
+        }
+    }
+
+    const handleUpload = (form) => {
+
+        $.ajax({
+
+            url: "ajax/upload_skin.php",
+            method: "post",
+            data: form,
+            contentType: false,
+            processData: false,
+            success: (res) => {
+                try {
+                    res = JSON.parse(res)
+                    if (res.upload) {
+                        alert("Upload Success!")
+                        window.location.assign(window.location.href.slice(0, window.location.href.indexOf("/uploads.html")))
+                    }
+                } catch (ex) {
+                    alert("Something wrong !")
+                    console.log(ex)
+                    window.location.assign(window.location.href)
+                }
+
+            }
+        })
+
+    }
+
+    //
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.singleFileUploadInput').attr('style', 'background-image: url("' + e.target.result + '")');
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#singleFileUploadInput").change(function () {
+        readURL(this);
+    });
+</script>
+</body>
+</html>
